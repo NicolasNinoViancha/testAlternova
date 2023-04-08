@@ -17,12 +17,12 @@ const SwitchTheme = ({ wrapper }: PropsSwitchTheme) => {
     const translateX = useRef(new Animated.Value(0)).current;
     const changeDark = Animated.timing(translateX, {
         toValue: TRANSLATION_X,
-        duration: 800,
+        duration: 500,
         useNativeDriver: true
     });
     const changeLight = Animated.timing(translateX, {
         toValue: 0,
-        duration: 800,
+        duration: 500,
         useNativeDriver: true
     });
     //hooks

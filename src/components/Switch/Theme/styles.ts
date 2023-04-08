@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { colors } from '@src/theme';
+import { COLORS } from '@src/theme';
 
 const { width } = Dimensions.get('window');
 export const SIZE_SWITCH_HEIGHT = width * 0.1,
@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
         width: SIZE_CIRCLE,
         height: SIZE_CIRCLE,
         borderRadius: 100,
-        backgroundColor: colors.common.white,
+        backgroundColor: COLORS.common.white,
         zIndex: 10
     },
     ctnIcons: {
