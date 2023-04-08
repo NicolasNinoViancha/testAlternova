@@ -6,7 +6,8 @@ import TapNavigator from './TapNavigator';
 const Stack = createNativeStackNavigator();
 
 const HomeNavigator = () => (
-    <Stack.Navigator initialRouteName="MainTap">
+    <Stack.Navigator
+        initialRouteName="MainTap">
         <Stack.Screen
             name="Detail"
             component={DetailScreen} />
