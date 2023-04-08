@@ -5,7 +5,7 @@ import ThemeContext from './ThemeContext';
 //models
 import { PropsProvider } from './models';
 //constant
-import { colors } from '@src/theme';
+import { COLORS } from '@src/theme';
 //component
 const ProviderContext = ({ children }: PropsProvider) => {
     //hooks
@@ -21,12 +21,12 @@ const ProviderContext = ({ children }: PropsProvider) => {
         isDark,
         colors: isDark
             ? {
-                ...colors.dark,
-                ...colors.common
+                ...COLORS.dark,
+                ...COLORS.common
             }
             : {
-                ...colors.light,
-                ...colors.common
+                ...COLORS.light,
+                ...COLORS.common
             },
         setScheme: () => setIsDark(prev => !prev),
     };

@@ -1,10 +1,10 @@
 import { createContext } from 'react';
 import { PropsContext } from './models';
-import { colors } from '@src/theme';
+import { COLORS } from '@src/theme';
 
 const ThemeContext = createContext<PropsContext>({
     isDark: false,
-    colors: { ...colors.light, ...colors.common },
+    colors: { ...COLORS.light, ...COLORS.common },
     setScheme: () => { },
 });
 export default ThemeContext;
