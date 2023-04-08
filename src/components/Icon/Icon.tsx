@@ -1,6 +1,6 @@
 import React from "react";
 //additional libraries
-import RNIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import RNIcon from 'react-native-vector-icons/Ionicons';
 //models
 import { PropsIcon } from './models';
 //component
