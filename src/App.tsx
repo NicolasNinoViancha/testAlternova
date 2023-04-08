@@ -1,16 +1,23 @@
 import * as React from 'react';
+//additional libraries
 import { NavigationContainer } from '@react-navigation/native';
+//additional components
+import { ViewBackground } from '@src/components';
+//routes
 import { LoginNavigator, HomeNavigator } from '@src/routes';
+import { View } from 'react-native';
 
-const isLogin = true;
-
+const isLogin = false;
+//component
 const App = () => (
   <NavigationContainer>
-    {
-      isLogin
-        ? <HomeNavigator />
-        : <LoginNavigator />
-    }
+    <ViewBackground>
+      {
+        isLogin
+          ? <HomeNavigator />
+          : <LoginNavigator />
+      }
+    </ViewBackground>
   </NavigationContainer>
 );
 
