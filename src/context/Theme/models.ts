@@ -10,6 +10,8 @@ export type PropsContext = {
         gray: string;
         white: string;
         orange: string;
+        red: string;
+        black: string;
     },
     setScheme: () => void,
 }

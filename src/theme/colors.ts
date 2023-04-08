@@ -1,4 +1,4 @@
-export const colors = {
+export const COLORS = {
     dark: {
         background: '#1D1D1B',
         text: '#FFFFFF'
@@ -12,6 +12,8 @@ export const colors = {
         pink: '#E61D6D',
         gray: '#D4D4D4',
         white: '#FFFFFF',
-        orange: '#FF6B03'
+        orange: '#FF6B03',
+        red: '#E53835',
+        black: '#1D1D1B'
     }
 };
