@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeScreen, ProfileScreen } from '@src/screens';
+import { HomeScreen, SettingsScreen } from '@src/screens';
 //additional components
 import { CustomTab } from '../components';
 
@@ -15,7 +15,7 @@ const TapNavigator = () => {
                 component={HomeScreen} />
             <Tab.Screen
                 name="Settings"
-                component={ProfileScreen} />
+                component={SettingsScreen} />
         </Tab.Navigator>
     );
 }
