@@ -10,6 +10,8 @@ import { styles } from './styles';
 const ButtonText = ({
     wrapper,
     text = '',
+    type = 'PRIMARY',
+    disable = false,
     onPress
 }: PropsButtonText) => {
     //hooks
@@ -24,11 +26,19 @@ const ButtonText = ({
             style={[
                 styles.container,
                 wrapper && wrapper,
-                { backgroundColor: isDark ? colors.pink : colors.black }
+                type === 'PRIMARY' && { backgroundColor: isDark ? colors.pink : colors.black },
+                type === 'SECUNDARY' && { borderWidth: 2, borderColor: isDark ? colors.pink : colors.black },
+                disable && { borderWidth: 0, backgroundColor: colors.gray }
             ]}
+            disabled={disable}
             onPress={onPress}>
             <Text
-                style={[styles.text, { color: colors.white }]}>
+                style={[
+                    styles.text,
+                    type === 'PRIMARY' && { color: colors.white },
+                    type === 'SECUNDARY' && { color: isDark ? colors.pink : colors.black },
+                    disable && { color: colors.white }
+                ]}>
                 {text}
             </Text>
         </TouchableOpacity>
