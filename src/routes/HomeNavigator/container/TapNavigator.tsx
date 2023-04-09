@@ -11,7 +11,7 @@ const TapNavigator = () => {
                 name="Home"
                 component={HomeScreen} />
             <Tab.Screen
-                name="Profile"
+                name="Settings"
                 component={ProfileScreen} />
         </Tab.Navigator>
     );

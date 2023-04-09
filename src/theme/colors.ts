@@ -1,11 +1,11 @@
 export const COLORS = {
     dark: {
-        background: '#1D1D1B',
+        background: '#0F0F0F',
         text: '#FFFFFF'
     },
     light: {
         background: '#FFFFFF',
-        text: '#1D1D1B'
+        text: '#0F0F0F'
     },
     common: {
         green: '#3AC7A4',
@@ -14,6 +14,6 @@ export const COLORS = {
         white: '#FFFFFF',
         orange: '#FF6B03',
         red: '#E53835',
-        black: '#1D1D1B'
+        black: '#0F0F0F'
     }
 };
