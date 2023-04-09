@@ -1,105 +1,63 @@
-import React from "react";
-import { View } from 'react-native';
-//additional libraries
-import { Controller, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import React, { useState } from "react";
+//additional librearies
+import auth from '@react-native-firebase/auth';
 //additional components
-import { SwitchTheme, Image, InputFullName, InputPassword, ButtonText } from '@src/components';
-//hooks
-import { useTheme } from '@src/hooks';
-//scheme
-import { schemeValidation } from '../validations';
+import Form from "./Form";
 //models
-import { PropsScreen } from '../models';
-//styles
-import { styles } from '../styles';
-//graphic resources
-const LogoCompany = require('@src/assets/Images/logoCompany.png');
-const LogoCompanyDark = require('@src/assets/Images/logoCompanyDark.png');
+import { PropsScreen, DataForm, DataError } from '../models';
+//constant
+import { INITIAL_STATE_ERROR } from '../constants';
 //component
 const Login = ({
     navigation
 }: PropsScreen) => {
-    //hooks
-    const {
-        isDark,
-        colors } = useTheme();
-    const {
-        control,
-        handleSubmit,
-        setValue,
-        formState: {
-            errors,
-            isValid } } = useForm({
-                resolver: yupResolver(schemeValidation),
-                mode: 'onChange',
-                defaultValues: {
-                    email: '',
-                    password: ''
-                }
-            });
+    //states
+    const [errorAuth, setErrorAuth] = useState<DataError>(INITIAL_STATE_ERROR);
     //functions
-    const handleAuth = (values: any) => {
-
+    const handleSignUp = async ({
+        email,
+        password }: DataForm) => {
+        setErrorAuth(prev => ({
+            ...prev,
+            isError: false,
+        }));
+        try {
+            const response = await auth().createUserWithEmailAndPassword(email, password);
+            console.log(response);
+        } catch (e) {
+            const error = e as any,
+                message = error.code as any;
+            setErrorAuth(prev => ({
+                isError: true,
+                text: message
+            }));
+        }
+    }
+    const handleSignIn = async ({
+        email,
+        password }: DataForm) => {
+        setErrorAuth(prev => ({
+            ...prev,
+            isError: false,
+        }));
+        try {
+            const response = await auth().signInWithEmailAndPassword(email, password);
+            console.log(response);
+        } catch (e) {
+            const error = e as any,
+                message = error.code as any;
+            setErrorAuth(prev => ({
+                isError: true,
+                text: message
+            }));
+        }
     }
     //main component
     return (
-        <View style={[styles.container, { backgroundColor: colors.background }]}>
-            <SwitchTheme
-                wrapper={styles.ctnSwitchTheme} />
-            <View style={styles.ctnImage}>
-                <Image
-                    resizeMode={'contain'}
-                    defaultSource={
-                        isDark
-                            ? LogoCompanyDark
-                            : LogoCompany}
-                    source={''} />
-            </View>
-            <View style={styles.ctnForm}>
-                <Controller
-                    control={control}
-                    render={({ field: { onChange, onBlur, value } }) => (
-                        <InputFullName
-                            wrapper={styles.ctnInput}
-                            placeholder={'example@example.com'}
-                            icon={'mail'}
-                            value={value}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            {...(errors.email?.message && {
-                                error: {
-                                    isError: true,
-                                    error: errors.email?.message
-                                }
-                            })} />
-                    )}
-                    name="email"
-                    rules={{ required: true }} />
-                <Controller
-                    control={control}
-                    render={({ field: { onChange, onBlur, value } }) => (
-                        <InputPassword
-                            wrapper={styles.ctnInput}
-                            placeholder={'contraseña'}
-                            value={value}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            {...(errors.password?.message && {
-                                error: {
-                                    isError: true,
-                                    error: errors.password?.message
-                                }
-                            })} />
-                    )}
-                    name="password"
-                    rules={{ required: true }} />
-                <ButtonText
-                    wrapper={styles.ctnForm}
-                    text={'Ingresar'}
-                    onPress={handleSubmit(handleAuth)} />
-            </View>
-        </View>
+        <Form
+            error={errorAuth}
+            onSignUp={handleSignUp}
+            onSignIn={handleSignIn} />
     );
 }
 export default Login;
