@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 //additional librearies
 import auth from '@react-native-firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 //additional components
 import Form from "./Form";
 //models
 import { PropsScreen, DataForm, DataError } from '../models';
 //constant
 import { INITIAL_STATE_ERROR } from '../constants';
+import { KEYS_ASYNC_STOREAGE } from '@src/constants';
 //component
 const Login = ({
     navigation
@@ -23,6 +25,10 @@ const Login = ({
         }));
         try {
             const response = await auth().createUserWithEmailAndPassword(email, password);
+            if (response)
+                await AsyncStorage.setItem(
+                    KEYS_ASYNC_STOREAGE.user,
+                    JSON.stringify({ email, password }));
             console.log(response);
         } catch (e) {
             const error = e as any,
@@ -42,6 +48,10 @@ const Login = ({
         }));
         try {
             const response = await auth().signInWithEmailAndPassword(email, password);
+            if (response)
+                await AsyncStorage.setItem(
+                    KEYS_ASYNC_STOREAGE.user,
+                    JSON.stringify({ email, password }));
             console.log(response);
         } catch (e) {
             const error = e as any,

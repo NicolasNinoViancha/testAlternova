@@ -23,7 +23,7 @@ const ButtonTap = ({
         onPress={onPress}>
         <Icon
             name={icon}
-            size={30}
+            size={25}
             color={
                 isFocused
                     ? COLORS.common.black

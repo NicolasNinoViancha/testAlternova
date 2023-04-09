@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 //additional components
 import { ViewBackground } from '@src/components';
-import { SplashScreen, LoginScreen } from '@src/screens';
+import { SplashScreen } from '@src/screens';
 //routes
 import { LoginNavigator, HomeNavigator } from '@src/routes';
 //component
@@ -14,8 +14,8 @@ const App = () => {
   const [isLogin, setIsLogin] = useState<boolean>();
   const [user, setUser] = useState<any>();
   //functions
-  // Handle user state changes
-  function onAuthStateChanged(user: any) {
+  //handle user state changes
+  const onAuthStateChanged = (user: any) => {
     setTimeout(() => {
       setUser(user);
       setIsLogin(user !== null);
