@@ -1,5 +1,5 @@
 import React from "react";
-import { View, FlatList } from 'react-native';
+import { View, FlatList, Alert } from 'react-native';
 //additional components
 import { ListEmptyComponent, CardProduct } from '../components';
 //hooks
@@ -22,7 +22,9 @@ const Home = ({ navigation }: PropsScreen) => {
         refetch
     } = useFecth('all-products');
     //functions
-    const handleNavigation = (id: number) => navigation.navigate('DetailProduct', { idProduct: id });
+    const handleNavigation = (id: number) => navigation.navigate('Detail', { id });
+    const handleBuy = (id: number, total: number) =>
+        Alert.alert('Comprar', `id:${id}\ntotal:${total}`);
     //main component
     return (
         <View style={[styles.container, { backgroundColor: colors.background }]}>
@@ -38,7 +40,8 @@ const Home = ({ navigation }: PropsScreen) => {
                         name={item.name}
                         price={item.price}
                         stock={item.stock}
-                        onPress={() => handleNavigation(item.id)} />
+                        onPress={() => handleNavigation(item.id)}
+                        onBuy={(total) => handleBuy(item.id, total)} />
                 )}
                 ListEmptyComponent={
                     <ListEmptyComponent
