@@ -30,7 +30,7 @@ const ListEmptyComponent = ({
         return (
             <View style={styles.container}>
                 <ButtonText
-                    text=""
+                    text="Intentar de nuevo"
                     onPress={onRefetch} />
             </View>
         );

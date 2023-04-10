@@ -10,6 +10,7 @@ const HomeNavigator = () => (
         initialRouteName="MainTap">
         <Stack.Screen
             name="Detail"
+            //@ts-ignore
             component={DetailScreen} />
         <Stack.Screen
             name="MainTap"
