@@ -4,7 +4,7 @@ import { COLORS } from '@src/theme';
 const { width, height } = Dimensions.get('window');
 
 const SIZE_IMAGE = width * 0.22,
-    SIZE_CARD = width * 0.28,
+    SIZE_CARD = width * 0.38,
     SIZE_BUTTON = width * 0.06;
 
 export const styles = StyleSheet.create({
@@ -30,10 +30,17 @@ export const styles = StyleSheet.create({
         backgroundColor: '#F6F6F6',
         borderRadius: 8
     },
+    viewDetails: {
+        flex: 1,
+        marginLeft: width * 0.05,
+        height: '100%',
+    },
+    info: {
+        width: '100%',
+        flexDirection: 'row',
+    },
     details: {
         flex: 1,
-        marginHorizontal: width * 0.05,
-        height: '100%',
         justifyContent: 'center'
     },
     title: {
@@ -54,8 +61,7 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     viewBtnAdd: {
-        height: '100%',
-        justifyContent: 'flex-end',
+        justifyContent: 'flex-end'
     },
     ctnBtnAdd: {
         flexDirection: 'row',
@@ -68,6 +74,7 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     btnSub: {
+        zIndex: 10,
         width: SIZE_BUTTON,
         height: SIZE_BUTTON,
         justifyContent: 'center',
@@ -77,11 +84,27 @@ export const styles = StyleSheet.create({
         borderRadius: 4
     },
     btnAdd: {
+        zIndex: 10,
         width: SIZE_BUTTON,
         height: SIZE_BUTTON,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: COLORS.common.green,
         borderRadius: 4
+    },
+    btnBuy: {
+        zIndex: 10,
+        width: '100%',
+        height: width * 0.1,
+        backgroundColor: COLORS.common.green,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 6,
+        marginTop: width * 0.04
+    },
+    textBtnBuy: {
+        fontSize: 16,
+        color: COLORS.common.white,
+        fontWeight: 'bold'
     }
 })

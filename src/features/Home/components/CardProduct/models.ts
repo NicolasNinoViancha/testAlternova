@@ -5,4 +5,5 @@ export type PropsCardProduct = {
     stock?: number;
     price?: number;
     onPress: () => void;
+    onBuy: (total: number) => void;
 }
