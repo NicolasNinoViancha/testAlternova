@@ -1,12 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import Detail from '@src/features/Detail/container';
+import { PropsDetail } from '@src/features/Detail/models';
 
-const DetailScreen = () => {
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Detail Screen</Text>
-        </View>
-    );
-}
+const DetailScreen = (props: PropsDetail) => (<Detail {...props} />);
 
 export default DetailScreen;
