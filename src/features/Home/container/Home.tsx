@@ -20,7 +20,7 @@ const Home = ({ navigation }: PropsScreen) => {
         loading,
         error,
         refetch
-    } = useFecth();
+    } = useFecth('all-products');
     //functions
     const handleNavigation = (id: number) => navigation.navigate('DetailProduct', { idProduct: id });
     //main component
