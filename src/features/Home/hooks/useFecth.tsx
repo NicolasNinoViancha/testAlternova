@@ -4,7 +4,7 @@ import { StoreItem } from '@src/models';
 //adapters
 import { storeItemsAdapter } from '@src/adapters';
 //constant
-const API_URL = 'https://1be9db56-c889-466d-9c12-cba178414901.mock.pstmn.io/';
+const API_URL = 'https://d15078a9-dfc7-49e7-b0f4-a28e9f81cdb7.mock.pstmn.io/';
 const MOCK_API = {
     "products": [
         {
@@ -56,10 +56,10 @@ const useFecth = (endPoint?: string) => {
         setError(false);
         setLoading(true);
         try {
-            //const response = await fetch(`${API_URL}${endPoint}`);
-            //const resJson = await response.json();
+            const response = await fetch(`${API_URL}${endPoint}`);
+            const resJson = await response.json();
             //mock fetch
-            const resJson = MOCK_API;
+            //const resJson = MOCK_API;
             setData(storeItemsAdapter(resJson.products));
         } catch (error) {
             setError(true);
